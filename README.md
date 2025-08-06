@@ -1,6 +1,6 @@
 # SPI AXI-Lite Wrapper
 
-A lightweight AXI-Lite-controlled SPI master wrapper that exposes a simple four-register interface for byte-wide transfers. Written in SystemVerilog, it instantiates a parameterizable `SPI_Master` block and handles clock-domain crossing of received data into the AXI domain.
+A lightweight AXI-Lite-controlled SPI master wrapper that exposes a simple four-register interface for byte-wide transfers. Written in SystemVerilog, it instantiates a parameterizable `SPI_Master` block.
 
 ---
 
