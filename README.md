@@ -103,3 +103,31 @@ SPI_AXI_Wrapper #(
   .SCLK(    SCLK),
   .SS(      SS)
 );
+```
+## AXI-Lite Transactions
+1. Write TX byte
+2. Address = 0x00, Data[7:0] = byte to send
+3. Trigger SPI transfer
+4. Address = 0x04, Data[0] = 1
+5. Wait for receive
+6. Poll Address = 0x0C until Data[0] == 1
+7. Read received byte
+8. Address = 0x08, Data[7:0] = received byte
+
+## Testbench
+- See tb_SPI_AXI_Wrapper.sv for a self-contained, loopback test that exercises both the AXI-Lite and SPI domains. It demonstrates:
+- Write/read register tasks
+- RX-seen polling
+- Automated pass/fail display
+
+## Future Improvements
+- Dynamic SPI-mode switching via new write register for CPOL/CPHA
+- Configurable clock divider register to adjust SPI speed on-the-fly
+- TX/RX FIFOs for burst transfers and deeper buffering
+- Interrupt output when new RX data arrives (instead of polling)
+- Parametric data-width support beyond 8-bit transfers
+- Multiple-slave support with individual SS control registers
+- Error-detection (CRC or parity)
+
+
+
